@@ -5,21 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navbar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
+            /* Using the Roboto font */
         }
 
         nav {
-            background-color: rgb(255, 255, 255);
-            color: rgb(0, 0, 0);
+            background-color: #ffffff;
+            /* Light background */
+            color: #333;
+            /* Dark text */
             padding: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 50px;
-            border: rgb(165, 1, 1) 2px solid;
+            height: 60px;
+            border-bottom: 2px solid #c8102e;
+            /* Red Bull Red */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
             margin-bottom: 20px;
         }
 
@@ -33,6 +40,8 @@
         nav h1 {
             margin: 0;
             font-size: 24px;
+            color: #c8102e;
+            /* Red Bull Red for the title */
         }
 
         nav ul {
@@ -49,8 +58,17 @@
         }
 
         nav a {
-            color: #DC0000;
+            color: #333;
+            /* Dark text for links */
             text-decoration: none;
+            font-weight: 500;
+            /* Medium weight for links */
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #c8102e;
+            /* Change color on hover */
         }
 
         .profile {
@@ -58,7 +76,8 @@
         }
 
         .profile-button {
-            color: #DC0000;
+            color: #333;
+            /* Dark color for profile */
             cursor: pointer;
             padding: 10px;
             margin-left: 20px;
@@ -67,7 +86,8 @@
         .dropdown {
             display: none;
             position: absolute;
-            background-color: white;
+            background-color: #ffffff;
+            /* Light background for dropdown */
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
@@ -75,6 +95,7 @@
 
         .dropdown a {
             color: black;
+            /* Dark text for dropdown links */
             padding: 12px 16px;
             text-decoration: none;
             display: block;
@@ -82,6 +103,7 @@
 
         .dropdown a:hover {
             background-color: #f1f1f1;
+            /* Light gray on hover */
         }
 
         .show {
@@ -94,6 +116,7 @@
             cursor: pointer;
             margin-left: 20px;
             border-radius: 50%;
+            /* Circular profile image */
         }
     </style>
 </head>
@@ -123,7 +146,6 @@
             document.getElementById("dropdownMenu").classList.toggle("show");
         }
 
-        //tutp
         window.onclick = function(event) {
             if (!event.target.matches('.profile-button')) {
                 var dropdown = document.getElementById("dropdownMenu");

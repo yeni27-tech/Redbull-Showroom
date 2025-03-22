@@ -24,7 +24,7 @@ if (isset($_POST['login'])) {
                 header("Location: ../admin/index.php");
                 exit();
             } elseif ($user['role'] == 'user') {
-                header("Location: ../index.php");
+                header("Location: ../publik/index.php");
                 exit();
             }
         } else {
@@ -69,7 +69,8 @@ if (isset($_POST['login'])) {
         input[type="text"],
         input[type="password"] {
             padding: 10px;
-            width: 200px;
+            width: 97%;
+            max-width: 400px;
             border: 1px solid #ccc;
             border-radius: 5px;
             margin-bottom: 10px;

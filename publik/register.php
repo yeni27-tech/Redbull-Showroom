@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $no_hp = $_POST['no_hp'];
     $password = $_POST['password'];
     $email = $_POST['email'];
-    $role = "admin";
+    $role = "user";
 
     $sql = "INSERT INTO usersr (username, password, email, role, nama_lengkap, no_hp) VALUES ('$username', '$password', '$email', '$role', '$nama_lengkap', '$no_hp')";
 
