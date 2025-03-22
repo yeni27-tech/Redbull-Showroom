@@ -1,5 +1,7 @@
 <?php
-include './connection/conn.php';
+include '../connection/conn.php';
+include '../session/session.php';
+include '../partials/navbar.php';
 
 $query = "SELECT p.*, u.nama_lengkap FROM product p LEFT JOIN usersr u ON p.id_user = u.id_user";
 $result = mysqli_query($conn, $query);
