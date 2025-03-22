@@ -1,7 +1,7 @@
 <?php
 include '../session/session.php';
 include '../connection/conn.php';
-include '../partials/navbar.php';
+// include '../partials/navbar.php';
 
 $query = "SELECT * FROM products";
 $result = mysqli_query($conn, $query);
@@ -21,7 +21,114 @@ $result = mysqli_query($conn, $query);
             /* Dark background for modern look */
             color: #fff;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+        }
+
+        /* navbar */
+        nav {
+            background-color: #ffffff;
+            /* Light background */
+            color: #333;
+            /* Dark text */
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            border-bottom: 2px solid #c8102e;
+            /* Red Bull Red */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 100px;
+            /* Adjusted size for better appearance */
+            height: auto;
+            /* Maintain aspect ratio */
+        }
+
+        nav h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #c8102e;
+            /* Red Bull Red for the title */
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            /* Align items vertically */
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: #333;
+            /* Dark text for links */
+            text-decoration: none;
+            font-weight: 500;
+            /* Medium weight for links */
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #c8102e;
+            /* Change color on hover */
+        }
+
+        .profile {
+            position: relative;
+        }
+
+        .profile-button {
+            color: #333;
+            /* Dark color for profile */
+            cursor: pointer;
+            padding: 10px;
+            margin-left: 20px;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            /* Light background for dropdown */
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown a {
+            color: black;
+            /* Dark text for dropdown links */
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown a:hover {
+            background-color: #f1f1f1;
+            /* Light gray on hover */
+        }
+
+        .show {
+            display: block;
+        }
+
+        .profile img {
+            width: 30px;
+            height: auto;
+            cursor: pointer;
+            margin-left: 20px;
+            border-radius: 50%;
+            /* Circular profile image */
         }
 
         h2 {
@@ -98,7 +205,7 @@ $result = mysqli_query($conn, $query);
         }
 
         /* About Section */
-        .about-section {
+        #about-section {
             background-color: #c8102e;
             /* Red Bull Red */
             color: #fff;
@@ -108,12 +215,12 @@ $result = mysqli_query($conn, $query);
             text-align: center;
         }
 
-        .about-section h3 {
+        #about-section h3 {
             margin-bottom: 10px;
         }
 
         /* Contact Section */
-        .contact-section {
+        #contact-section {
             background-color: #1e1e1e;
             /* Dark background */
             color: #fff;
@@ -123,18 +230,18 @@ $result = mysqli_query($conn, $query);
             text-align: center;
         }
 
-        .contact-section h3 {
+        #contact-section h3 {
             margin-bottom: 10px;
         }
 
-        .contact-section a {
+        #contact-section a {
             color: #ffcc00;
             /* Gold color */
             text-decoration: none;
             transition: color 0.3s;
         }
 
-        .contact-section a:hover {
+        #contact-section a:hover {
             color: #fff;
             /* Change to white on hover */
         }
@@ -148,6 +255,42 @@ $result = mysqli_query($conn, $query);
 </head>
 
 <body>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">
+            <img src="../img/logo.png" alt="Logo">
+        </div>
+        <h1>Red Bull Showroom</h1>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="profile">
+                <span class="profile-button" onclick="toggleDropdown()"><img src="../img/profile.png" alt="profile"></span>
+                <div class="dropdown" id="dropdownMenu">
+                    <a href="profile.php">View Profile</a>
+                    <a href="../session/logout.php">Logout</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <script>
+        function toggleDropdown() {
+            document.getElementById("dropdownMenu").classList.toggle("show");
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.profile-button')) {
+                var dropdown = document.getElementById("dropdownMenu");
+                if (dropdown.classList.contains('show')) {
+                    dropdown.classList.remove('show');
+                }
+            }
+        }
+    </script>
+
+
     <h2>Dashboard Showroom</h2>
     <p class="welcome">Selamat datang, <?= $_SESSION['username']; ?>!</p>
     <div class="card-container">
@@ -173,18 +316,18 @@ $result = mysqli_query($conn, $query);
     </div>
 
     <!-- About Section -->
-    <div class="about-section">
+    <section id="about-section">
         <h3>Tentang Kami</h3>
         <p>Kami adalah showroom mobil balap yang menyediakan berbagai jenis mobil berkualitas tinggi. Mengedepankan inovasi dan performa, kami siap memberikan pengalaman terbaik bagi pecinta otomotif.</p>
-    </div>
+    </section>
 
     <!-- Contact Section -->
-    <div class="contact-section">
+    <section id="contact-section">
         <h3>Kontak Kami</h3>
         <p>Untuk pertanyaan lebih lanjut, silakan hubungi kami melalui:</p>
         <p>Email: <a href="mailto:info@showroom.com">info@showroom.com</a></p>
         <p>Telepon: <a href="tel:+62123456789">+62 123 456 789</a></p>
-    </div>
+    </section>
 </body>
 
 </html>

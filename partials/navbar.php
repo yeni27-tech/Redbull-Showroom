@@ -128,9 +128,9 @@
         </div>
         <h1>Red Bull Showroom</h1>
         <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="about.php">About</a></li>
-            <li><a href="contact.php">Contact</a></li>
+            <li><a href="../publik/index.php">Home</a></li>
+            <li><a href="../publik/index.php/#about">About</a></li>
+            <li><a href="../publik/index.php/#contact">Contact</a></li>
             <li class="profile">
                 <span class="profile-button" onclick="toggleDropdown()"><img src="../img/profile.png" alt="profile"></span>
                 <div class="dropdown" id="dropdownMenu">
