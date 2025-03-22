@@ -1,7 +1,6 @@
 <?php
 session_start();
 include '../connection/conn.php';
-include '../partials/navbar.php';
 
 if (isset($_POST['login'])) {
     $username = trim($_POST['username']);
@@ -34,6 +33,7 @@ if (isset($_POST['login'])) {
         $error = "Harap isi semua kolom.";
     }
 }
+include '../partials/navbar.php';
 ?>
 
 <!DOCTYPE html>
